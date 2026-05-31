@@ -1,4 +1,4 @@
-const plantsData = [
+window.plantsData = [
   {
     id: "tulip",
     category: "garden",

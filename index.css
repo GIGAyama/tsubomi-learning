@@ -1,0 +1,501 @@
+/* ==========================================================================
+   つぼみ学習支援サイト デザインシステム & スタイル
+   ========================================================================== */
+
+/* 変数定義（目に優しく、プレミアム感のあるカラーパレット） */
+:root {
+  --bg-main: #f4fbf7;       /* メイン背景：極めて薄いミントグリーン */
+  --bg-card: #ffffff;       /* カード背景：クリーンな白 */
+  --text-main: #2b3a33;     /* 主要文字：深いダークグリーン */
+  --text-sub: #5c6e65;      /* 補助文字：マイルドなグレーグリーン */
+  --primary: #41b07d;       /* プライマリ：優しい新緑のグリーン */
+  --primary-hover: #359669; /* プライマリホバー */
+  --secondary: #e6f6ee;     /* セカンダリ：淡いミント */
+  --secondary-text: #2f805a;
+  --accent-question: #ff8e53; /* 問いバッジ：ソフトな暖色オレンジ */
+  --accent-answer: #4a90e2;   /* 答えバッジ：さわやかなブルー */
+  --shadow-soft: 0 16px 32px rgba(65, 176, 125, 0.08); /* 柔らかい影 */
+  --shadow-hover: 0 24px 48px rgba(65, 176, 125, 0.15); /* 浮き上がり時の影 */
+  --font-family: 'Kosugi Maru', 'Outfit', sans-serif;
+  --border-radius-large: 28px;
+  --border-radius-medium: 16px;
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 基本リセット & タイポグラフィ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.8;
+  padding: 40px 20px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ヘッダーデザイン */
+.main-header {
+  text-align: center;
+  margin-bottom: 30px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.header-container {
+  background: var(--bg-card);
+  padding: 30px 40px;
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-soft);
+  border: 2px solid rgba(65, 176, 125, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 装飾的な背景グラデーション */
+.header-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary), var(--accent-question), var(--accent-answer));
+}
+
+.badge {
+  display: inline-block;
+  background-color: var(--secondary);
+  color: var(--secondary-text);
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 50px;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 32px;
+  color: var(--text-main);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+ruby rt {
+  font-size: 0.45em;
+  color: var(--text-sub);
+  letter-spacing: 0.1em;
+  padding-bottom: 2px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--text-sub);
+  word-break: keep-all;
+}
+
+/* カテゴリナビゲーションタブ */
+.category-nav {
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+}
+
+.tabs-container {
+  display: flex;
+  gap: 16px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 50px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(65, 176, 125, 0.08);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab-btn {
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 40px;
+  cursor: pointer;
+  color: var(--text-sub);
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tab-btn:hover {
+  color: var(--text-main);
+  background-color: var(--bg-main);
+}
+
+.tab-btn.active {
+  background-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(65, 176, 125, 0.25);
+}
+
+/* メインコンテンツ */
+.content-container {
+  max-width: 1200px;
+  width: 100%;
+  flex: 1;
+}
+
+/* グリッドレイアウト */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+/* カードフリップ構造 */
+.card-wrapper {
+  perspective: 1500px; /* 3D効果の奥行き */
+  animation: cardFadeIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+/* タブ切り替え時のフェードインアニメーション */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.card-wrapper.hidden {
+  display: none !important;
+}
+
+.card-outer {
+  width: 100%;
+  height: 620px; /* カードの高さを統一 */
+  cursor: pointer;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--border-radius-large);
+}
+
+/* ホバーおよびフォーカス効果 */
+.card-outer:hover .card-inner {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-8px);
+}
+
+/* フリップ状態 */
+.card-wrapper.is-flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* カードの各面共通設定 */
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* 裏側を表示しない */
+  border-radius: var(--border-radius-large);
+  background-color: var(--bg-card);
+  border: 2px solid rgba(65, 176, 125, 0.08);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg); /* 初期状態で裏返しておく */
+  border-color: rgba(74, 144, 226, 0.15);
+}
+
+/* カードバッジ（とい / こたえ） */
+.card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.badge-question {
+  background-color: var(--accent-question);
+}
+
+.badge-answer {
+  background-color: var(--accent-answer);
+}
+
+/* 画像表示ボックス */
+.image-box {
+  width: 100%;
+  height: 280px;
+  border-radius: var(--border-radius-medium);
+  overflow: hidden;
+  position: relative;
+  background-color: #f7faf8;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card-outer:hover .image-box img {
+  transform: scale(1.04);
+}
+
+/* テキストボックス（ルビ付き文字用） */
+.text-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  text-align: left;
+}
+
+.question-text, .answer-text {
+  font-size: 20px;
+  color: var(--text-main);
+  word-break: keep-all;
+  font-weight: 500;
+  width: 100%;
+}
+
+/* ボタンデザイン */
+.btn-group {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--border-radius-medium);
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  flex: 1;
+  outline: none;
+}
+
+.btn-icon {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+/* 音声ボタンのスタイル（穏やかなデザイン） */
+.btn-audio {
+  background-color: #f0f3f1;
+  color: var(--text-sub);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.btn-audio:hover {
+  background-color: #e2e7e4;
+  color: var(--text-main);
+}
+
+.btn-audio.is-playing {
+  background-color: #ffd8a8;
+  color: #d9480f;
+  animation: pulse 1.5s infinite;
+}
+
+/* アクションボタン（こたえをみる / つぼみをみる） */
+.btn-action {
+  background-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(65, 176, 125, 0.2);
+}
+
+.btn-action:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(65, 176, 125, 0.3);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-text);
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background-color: #d1ebd9;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: scale(0.96) translateY(0);
+}
+
+.btn-arrow {
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+
+.btn-action:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-secondary:hover .btn-arrow {
+  transform: translateX(-4px);
+}
+
+/* 学習振り返りエリア */
+.learning-note {
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  width: 100%;
+}
+
+.note-container {
+  background-color: #fffbeb; /* 暖かいイエローがかった白 */
+  padding: 35px;
+  border-radius: var(--border-radius-large);
+  box-shadow: 0 12px 28px rgba(245, 166, 35, 0.06);
+  border: 2px dashed rgba(245, 166, 35, 0.25);
+}
+
+.note-container h2 {
+  font-size: 22px;
+  color: #d97706;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.note-container p {
+  font-size: 18px;
+  color: #78350f;
+  line-height: 1.9;
+}
+
+/* フッター */
+.main-footer {
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+  border-top: 1px solid rgba(65, 176, 125, 0.1);
+}
+
+.main-footer p {
+  font-size: 14px;
+  color: var(--text-sub);
+}
+
+/* 音声再生時のパルスアニメーション */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 142, 83, 0.4);
+  }
+  70% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 10px rgba(255, 142, 83, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 142, 83, 0);
+  }
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 10px;
+  }
+  
+  .header-container {
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 26px;
+  }
+  
+  .subtitle {
+    font-size: 15px;
+  }
+  
+  .tabs-container {
+    padding: 6px;
+    border-radius: 20px;
+    gap: 8px;
+  }
+  
+  .tab-btn {
+    font-size: 15px;
+    padding: 8px 18px;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .card-outer {
+    height: 580px;
+  }
+  
+  .image-box {
+    height: 240px;
+  }
+  
+  .question-text, .answer-text {
+    font-size: 17px;
+  }
+  
+  .note-container {
+    padding: 20px;
+  }
+  
+  .note-container h2 {
+    font-size: 18px;
+  }
+  
+  .note-container p {
+    font-size: 15px;
+  }
+}

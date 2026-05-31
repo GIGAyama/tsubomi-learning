@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>いろいろな つぼみと はな - こくご「つぼみ」の がくしゅう</title>
+  <link rel="stylesheet" href="index.css">
+  <!-- Google Fonts から Outfit と Kosugi Maru をインポート（丸文字で読みやすく） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ヘッダーエリア -->
+  <header class="main-header">
+    <div class="header-container">
+      <span class="badge">こくご「つぼみ」の がくしゅう</span>
+      <h1 id="page-title">いろいろな つぼみと <ruby>花<rt>はな</rt></ruby></h1>
+      <p class="subtitle">
+        つぼみの <ruby>写真<rt>しゃしん</rt></ruby>を おすと、どんな <ruby>花<rt>はな</rt></ruby>が <ruby>咲<rt>さ</rt></ruby>くか わかるよ！<br>
+        「こえで きく」ボタンを おすと、ゆっくり よんで くれるよ。
+      </p>
+    </div>
+  </header>
+
+  <!-- カテゴリ切り替えタブ（追加） -->
+  <nav class="category-nav" aria-label="しょくぶつの なかまわけ">
+    <div class="tabs-container">
+      <button class="tab-btn active" data-category="all" aria-selected="true">
+        🌸 すべての しょくぶつ
+      </button>
+      <button class="tab-btn" data-category="garden" aria-selected="false">
+        🏡 にわ・みちばたの はな
+      </button>
+      <button class="tab-btn" data-category="food" aria-selected="false">
+        🍅 やさい・くだものの はな
+      </button>
+    </div>
+  </nav>
+
+  <!-- メインコンテンツ -->
+  <main class="content-container">
+    
+    <!-- 動的にカードが挿入されるグリッド -->
+    <section id="cards-container" class="cards-grid">
+      <!-- JavaScriptによってカードがここに自動生成されます -->
+    </section>
+
+    <!-- 学習振り返りエリア -->
+    <section class="learning-note">
+      <div class="note-container">
+        <h2>💡 がくしゅうの ポイント</h2>
+        <p>
+          「とい」の ぶんと、「こたえ」の ぶんを よく よみくらべて みよう。<br>
+          つぼみの <ruby>形<rt>かたち</rt></ruby>や、<ruby>花<rt>はな</rt></ruby>の <ruby>咲<rt>さ</rt></ruby>きかたが、どのように せつめい されているかな？<br>
+          <ruby>教科書<rt>きょうかしょ</rt></ruby>の 「あさがお」「はす」「ききょう」と おなじように、はじめに 「とい」があって、つぎに 「こたえ」が 書かれている じゅんじょを たしかめて みよう。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="main-footer">
+    <p>© 2026 こくごの じかん. すべての しゃしんは かんさつに もとづいています。</p>
+  </footer>
+
+  <!-- データファイルとロジックファイルを読み込み -->
+  <script src="plants-data.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

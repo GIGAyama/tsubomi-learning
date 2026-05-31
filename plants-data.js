@@ -1,0 +1,222 @@
+const plantsData = [
+  {
+    id: "tulip",
+    category: "garden",
+    name: "チューリップ",
+    question: "これは、チューリップの つぼみです。<br>とがった ぼうしのような <ruby>形<rt>かたち</rt></ruby>を しています。だんだん <ruby>花<rt>はな</rt></ruby>の色に かわっていきます。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、チューリップの <ruby>花<rt>はな</rt></ruby>です。<br><ruby>上<rt>うえ</rt></ruby>を <ruby>向<rt>む</rt></ruby>いて、つつんでいた <ruby>花<rt>はな</rt></ruby>びらが ふわりと <ruby>開<rt>ひら</rt></ruby>きます。",
+    questionAudioLabel: "チューリップのつぼみのせつめいをきく",
+    answerAudioLabel: "チューリップのはなのせつめいをきく",
+    budImage: "assets/tulip_bud.png",
+    flowerImage: "assets/tulip_flower.png"
+  },
+  {
+    id: "sunflower",
+    category: "garden",
+    name: "ひまわり",
+    question: "これは、ひまわりの つぼみです。<br><ruby>緑<rt>みどり</rt></ruby>の はっぱに くるまれていて、たいらな おさらのような <ruby>形<rt>かたち</rt></ruby>を しています。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、ひまわりの <ruby>花<rt>はな</rt></ruby>です。<br>まわりの <ruby>黄色<rt>きいろ</rt></ruby>い <ruby>花<rt>はな</rt></ruby>びらが いちまいずつ <ruby>開<rt>ひら</rt></ruby>いて、たいようのように おおきく <ruby>咲<rt>さ</rt></ruby>きます。",
+    questionAudioLabel: "ひまわりのつぼみのせつめいをきく",
+    answerAudioLabel: "ひまわりのはなのせつめいをきく",
+    budImage: "assets/sunflower_bud.png",
+    flowerImage: "assets/sunflower_flower.png"
+  },
+  {
+    id: "dandelion",
+    category: "garden",
+    name: "たんぽぽ",
+    question: "これは、たんぽぽの つぼみです。<br>はじめは じめんの ちかくで、ぎゅっと とじて <ruby>下<rt>した</rt></ruby>を <ruby>向<rt>む</rt></ruby>いています。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、たんぽぽの <ruby>花<rt>はな</rt></ruby>です。<br><ruby>咲<rt>さ</rt></ruby>くときに まっすぐ <ruby>上<rt>うえ</rt></ruby>を <ruby>向<rt>む</rt></ruby>きます。おひさまが でると <ruby>開<rt>ひら</rt></ruby>いて、かげると とじます。",
+    questionAudioLabel: "たんぽぽのつぼみのせつめいをきく",
+    answerAudioLabel: "たんぽぽのはなのせつめいをきく",
+    budImage: "assets/dandelion_bud.png",
+    flowerImage: "assets/dandelion_flower.png"
+  },
+  {
+    id: "hydrangea",
+    category: "garden",
+    name: "あじさい",
+    question: "これは、あじさいの つぼみです。<br><ruby>緑色<rt>みどりいろ</rt></ruby>の ちいさな つぶつぶが、ぎゅっと あつまっています。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、あじさいの <ruby>花<rt>はな</rt></ruby>です。<br>ちいさな <ruby>花<rt>はな</rt></ruby>が たくさん あつまって、おおきな まんまるい <ruby>形<rt>かたち</rt></ruby>になって <ruby>咲<rt>さ</rt></ruby>きます。",
+    questionAudioLabel: "あじさいのつぼみのせつめいをきく",
+    answerAudioLabel: "あじさいのはなのせつめいをきく",
+    budImage: "assets/hydrangea_bud.png",
+    flowerImage: "assets/hydrangea_flower.png"
+  },
+  {
+    id: "rose",
+    category: "garden",
+    name: "バラ",
+    question: "これは、バラの つぼみです。<br>とげのある くきの さきにあって、<ruby>緑<rt>みどり</rt></ruby>の はっぱに かたく つつまれています。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、バラの <ruby>花<rt>はな</rt></ruby>です。<br>なんまいもの <ruby>花<rt>はな</rt></ruby>びらが かさなりあって、とても はなやかに <ruby>開<rt>ひら</rt></ruby>きます。いい においが します。",
+    questionAudioLabel: "バラのつぼみのせつめいをきく",
+    answerAudioLabel: "バラのはなのせつめいをきく",
+    budImage: "assets/rose_bud.png",
+    flowerImage: "assets/rose_flower.png"
+  },
+  {
+    id: "sakura",
+    category: "garden",
+    name: "さくら",
+    question: "これは、さくらの つぼみです。<br>ちゃいろくて かたい かわの なかに、ちいさな つぼみが いくつも かくれて います。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、さくらの <ruby>花<rt>はな</rt></ruby>です。<br>うすい ピンクいろの <ruby>花<rt>はな</rt></ruby>びらが、いっせいに ふんわりと <ruby>開<rt>ひら</rt></ruby>きます。",
+    questionAudioLabel: "さくらのつぼみのせつめいをきく",
+    answerAudioLabel: "さくらのはなのせつめいをきく",
+    budImage: "assets/sakura_bud.png",
+    flowerImage: "assets/sakura_flower.png"
+  },
+  {
+    id: "cosmos",
+    category: "garden",
+    name: "コスモス",
+    question: "これは、コスモスの つぼみです。<br>ほそい はっぱの さきに、まるくて ちいさな つぼみが つきます。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、コスモスの <ruby>花<rt>はな</rt></ruby>です。<br>うすくて ひらべったい <ruby>花<rt>はな</rt></ruby>びらが、おひさまに むかって まるく <ruby>開<rt>ひら</rt></ruby>きます。",
+    questionAudioLabel: "コスモスのつぼみのせつめいをきく",
+    answerAudioLabel: "コスモスのはなのせつめいをきく",
+    budImage: "assets/cosmos_bud.png",
+    flowerImage: "assets/cosmos_flower.png"
+  },
+  {
+    id: "azalea",
+    category: "garden",
+    name: "つつじ",
+    question: "これは、つつじの つぼみです。<br>ねばねばした <ruby>緑<rt>みどり</rt></ruby>の はっぱに つつまれて、ながくて とがった <ruby>形<rt>かたち</rt></ruby>を しています。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、つつじの <ruby>花<rt>はな</rt></ruby>です。<br>ラッパのような <ruby>形<rt>かたち</rt></ruby>の <ruby>花<rt>はな</rt></ruby>が、ちかくに たくさん あつまって げんきに <ruby>咲<rt>さ</rt></ruby>きます。",
+    questionAudioLabel: "つつじのつぼみのせつめいをきく",
+    answerAudioLabel: "つつじのはなのせつめいをきく",
+    budImage: "assets/azalea_bud.png",
+    flowerImage: "assets/azalea_flower.png"
+  },
+  {
+    id: "nanohana",
+    category: "food",
+    name: "菜の花",
+    question: "これは、菜の花の つぼみです。<br><ruby>緑<rt>みどり</rt></ruby>の くきの さきに、ちいさな つぼみが かたまって たくさん つきます。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、菜の花の <ruby>花<rt>はな</rt></ruby>です。<br><ruby>下<rt>した</rt></ruby>の ほうから じゅんばんに、<ruby>黄色<rt>きいろ</rt></ruby>い ちいさな <ruby>花<rt>はな</rt></ruby>が たくさん <ruby>咲<rt>さ</rt></ruby>いて いきます。",
+    questionAudioLabel: "菜の花のつぼみのせつめいをきく",
+    answerAudioLabel: "菜の花のはなのせつめいをきく",
+    budImage: "assets/nanohana_bud.png",
+    flowerImage: "assets/nanohana_flower.png"
+  },
+  {
+    id: "lily",
+    category: "garden",
+    name: "ゆり",
+    question: "これは、ゆりの つぼみです。<br><ruby>下<rt>した</rt></ruby>を むいた、おおきくて ほそながい バナナのような <ruby>形<rt>かたち</rt></ruby>を しています。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、ゆりの <ruby>花<rt>はな</rt></ruby>です。<br><ruby>上<rt>うえ</rt></ruby>や よこを むいて、おおきな <ruby>花<rt>はな</rt></ruby>びらが そりかえるように <ruby>開<rt>ひら</rt></ruby>きます。",
+    questionAudioLabel: "ゆりのつぼみのせつめいをきく",
+    answerAudioLabel: "ゆりのはなのせつめいをきく",
+    budImage: "assets/lily_bud.png",
+    flowerImage: "assets/lily_flower.png"
+  },
+  {
+    id: "pansy",
+    category: "garden",
+    name: "パンジー",
+    question: "これは、パンジーの つぼみです。<br><ruby>下<rt>した</rt></ruby>を むいていて、すきまから <ruby>花<rt>はな</rt></ruby>の色が ちらっと 見えています。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、パンジーの <ruby>花<rt>はな</rt></ruby>です。<br><ruby>上<rt>うえ</rt></ruby>を むいて、ちょうちょが はねを ひろげたように ひらひらと <ruby>咲<rt>さ</rt></ruby>きます。",
+    questionAudioLabel: "パンジーのつぼみのせつめいをきく",
+    answerAudioLabel: "パンジーのはなのせつめいをきく",
+    budImage: "assets/pansy_bud.png",
+    flowerImage: "assets/pansy_flower.png"
+  },
+  {
+    id: "carnation",
+    category: "garden",
+    name: "カーネーション",
+    question: "これは、カーネーションの つぼみです。<br><ruby>緑<rt>みどり</rt></ruby>の ふとい コップのような がくの <ruby>上<rt>うえ</rt></ruby>に、ちいさく まとまっています。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、カーネーションの <ruby>花<rt>はな</rt></ruby>です。<br>はなびらの はしが ギザギザしていて、ドレスの フリルのように かさなりあって <ruby>咲<rt>さ</rt></ruby>きます。",
+    questionAudioLabel: "カーネーションのつぼみのせつめいをきく",
+    answerAudioLabel: "カーネーションのはなのせつめいをきく",
+    budImage: "assets/carnation_bud.png",
+    flowerImage: "assets/carnation_flower.png"
+  },
+  {
+    id: "camellia",
+    category: "garden",
+    name: "つばき",
+    question: "これは、つばきの つぼみです。<br>かたい <ruby>緑<rt>みどり</rt></ruby>の かわに つつまれていて、つるつると まるい <ruby>形<rt>かたち</rt></ruby>を しています。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、つばきの <ruby>花<rt>はな</rt></ruby>です。<br>かたい はっぱの あいだで、あかい <ruby>花<rt>はな</rt></ruby>びらが コップのように まるく <ruby>開<rt>ひら</rt></ruby>きます。",
+    questionAudioLabel: "つばきのつぼみのせつめいをきく",
+    answerAudioLabel: "つばきのはなのせつめいをきく",
+    budImage: "assets/camellia_bud.png",
+    flowerImage: "assets/camellia_flower.png"
+  },
+  {
+    id: "cucumber",
+    category: "food",
+    name: "キュウリ",
+    question: "これは、キュウリの つぼみです。<br><ruby>緑<rt>みどり</rt></ruby>の ほそい トゲトゲの ある ちいさな つぼみで、はっぱの わきに つきます。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、キュウリの <ruby>花<rt>はな</rt></ruby>です。<br><ruby>黄色<rt>きいろ</rt></ruby>い <ruby>星<rt>ほし</rt></ruby>のような <ruby>形<rt>かたち</rt></ruby>の <ruby>花<rt>はな</rt></ruby>が <ruby>咲<rt>さ</rt></ruby>きます。はなの下には、もう ちいさな キュウリが ついています。",
+    questionAudioLabel: "キュウリのつぼみのせつめいをきく",
+    answerAudioLabel: "キュウリのはなのせつめいをきく",
+    budImage: "assets/cucumber_bud.png",
+    flowerImage: "assets/cucumber_flower.png"
+  },
+  {
+    id: "strawberry",
+    category: "food",
+    name: "いちご",
+    question: "これは、いちごの つぼみです。<br><ruby>緑<rt>みどり</rt></ruby>の ギザギザした はっぱに つつまれて、<ruby>下<rt>した</rt></ruby>を むいています。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、いちごの <ruby>花<rt>はな</rt></ruby>です。<br>しろくて まるい <ruby>花<rt>はな</rt></ruby>びらが <ruby>開<rt>ひら</rt></ruby>きます。<ruby>花<rt>はな</rt></ruby>が ちった あとに、あまくて あかい <ruby>実<rt>み</rt></ruby>が できます。",
+    questionAudioLabel: "いちごのつぼみのせつめいをきく",
+    answerAudioLabel: "いちごのはなのせつめいをきく",
+    budImage: "assets/strawberry_bud.png",
+    flowerImage: "assets/strawberry_flower.png"
+  },
+  {
+    id: "pumpkin",
+    category: "food",
+    name: "かぼちゃ",
+    question: "これは、かぼちゃの つぼみです。<br>ぐるぐると ねじれた すじがある、<ruby>緑<rt>みどり</rt></ruby>の おおきな つぼみです。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、かぼちゃの <ruby>花<rt>はな</rt></ruby>です。<br><ruby>黄色<rt>きいろ</rt></ruby>い おおきな ラッパのような <ruby>形<rt>かたち</rt></ruby>の <ruby>花<rt>はな</rt></ruby>が げんきに <ruby>咲<rt>さ</rt></ruby>きます。",
+    questionAudioLabel: "かぼちゃのつぼみのせつめいをきく",
+    answerAudioLabel: "かぼちゃのはなのせつめいをきく",
+    budImage: "assets/pumpkin_bud.png",
+    flowerImage: "assets/pumpkin_flower.png"
+  },
+  {
+    id: "okra",
+    category: "food",
+    name: "おくら",
+    question: "これは、おくラの つぼみです。<br><ruby>上<rt>うえ</rt></ruby>を むいた、とがった どんぐりのような <ruby>形<rt>かたち</rt></ruby>を しています。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、おくラの <ruby>花<rt>はな</rt></ruby>です。<br>うすい <ruby>黄色<rt>きいろ</rt></ruby>の おおきな <ruby>花<rt>はな</rt></ruby>が <ruby>上<rt>うえ</rt></ruby>を むいて <ruby>開<rt>ひら</rt></ruby>きます。あさに <ruby>咲<rt>さ</rt></ruby>いて、<ruby>夕方<rt>ゆうがた</rt></ruby>には しぼんでしまいます。",
+    questionAudioLabel: "おくらのつぼみのせつめいをきく",
+    answerAudioLabel: "おくらのはなのせつめいをきく",
+    budImage: "assets/okra_bud.png",
+    flowerImage: "assets/okra_flower.png"
+  },
+  {
+    id: "apple",
+    category: "food",
+    name: "りんご",
+    question: "これは、りんごの つぼみです。<br>うすい ピンクいろの まるい つぼみが、えだの さきに なかよく あつまっています。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、りんごの <ruby>花<rt>はな</rt></ruby>です。<br>しろくて まるい <ruby>花<rt>はな</rt></ruby>びらが、ほんのり ピンクに そまって かわいく <ruby>咲<rt>さ</rt></ruby>きます。",
+    questionAudioLabel: "りんごのつぼみのせつめいをきく",
+    answerAudioLabel: "りんごのはなのせつめいをきく",
+    budImage: "assets/apple_bud.png",
+    flowerImage: "assets/apple_flower.png"
+  },
+  {
+    id: "mandarin",
+    category: "food",
+    name: "みかん",
+    question: "これは、みかんの つぼみです。<br>しろくて まるい、ちいさな しんじゅの 玉のような つぼみです。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、みかんの <ruby>花<rt>はな</rt></ruby>です。<br>しろくて かたい <ruby>花<rt>はな</rt></ruby>びらが ５まい <ruby>開<rt>ひら</rt></ruby>きます。とても いい においが します。",
+    questionAudioLabel: "みかんのつぼみのせつめいをきく",
+    answerAudioLabel: "みかんのはなのせつめいをきく",
+    budImage: "assets/mandarin_bud.png",
+    flowerImage: "assets/mandarin_flower.png"
+  },
+  {
+    id: "broccoli",
+    category: "food",
+    name: "ブロッコリー",
+    question: "これは、ブロッコリーの つぼみです。<br><ruby>緑<rt>みどり</rt></ruby>の ちいさな つぶつぶが、もこもこと ぎっしり あつまっています。わたしたちが いつも <ruby>食<rt>た</rt></ruby>べている ところです。<br>これは、なんの つぼみでしょう。",
+    answer: "これは、ブロッコリーの <ruby>花<rt>はな</rt></ruby>です。<br>ちいさな <ruby>黄色<rt>きいろ</rt></ruby>い <ruby>花<rt>はな</rt></ruby>が、あちこちから たくさん とびだすように <ruby>咲<rt>さ</rt></ruby>きます。",
+    questionAudioLabel: "ブロッコリーのつぼみのせつめいをきく",
+    answerAudioLabel: "ブロッコリーのはなのせつめいをきく",
+    budImage: "assets/broccoli_bud.png",
+    flowerImage: "assets/broccoli_flower.png"
+  }
+];

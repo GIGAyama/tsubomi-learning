@@ -7,8 +7,8 @@ window.plantsData = [
     answer: "これは、チューリップの つぼみです。<br><ruby>上<rt>うえ</rt></ruby>を <ruby>向<rt>む</rt></ruby>いて、つつんでいた <ruby>花<rt>はな</rt></ruby>びらが ふわりと <ruby>開<rt>ひら</rt></ruby>きます。",
     questionAudioLabel: "チューリップのつぼみのせつめいをきく",
     answerAudioLabel: "チューリップのはなのせつめいをきく",
-    budImage: "assets/tulip_bud.png",
-    flowerImage: "assets/tulip_flower.png"
+    budImage: "assets/tulip_bud.webp",
+    flowerImage: "assets/tulip_flower.webp"
   },
   {
     id: "sunflower",
@@ -18,8 +18,8 @@ window.plantsData = [
     answer: "これは、ひまわりの つぼみです。<br>まわりの <ruby>黄色<rt>きいろ</rt></ruby>い <ruby>花<rt>はな</rt></ruby>びらが いちまいずつ <ruby>開<rt>ひら</rt></ruby>いて、たいようのように おおきく <ruby>咲<rt>さ</rt></ruby>きます。",
     questionAudioLabel: "ひまわりのつぼみのせつめいをきく",
     answerAudioLabel: "ひまわりのはなのせつめいをきく",
-    budImage: "assets/sunflower_bud.png",
-    flowerImage: "assets/sunflower_flower.png"
+    budImage: "assets/sunflower_bud.webp",
+    flowerImage: "assets/sunflower_flower.webp"
   },
   {
     id: "dandelion",
@@ -29,8 +29,8 @@ window.plantsData = [
     answer: "これは、たんぽぽの つぼみです。<br><ruby>咲<rt>さ</rt></ruby>くときに まっすぐ <ruby>上<rt>うえ</rt></ruby>を <ruby>向<rt>む</rt></ruby>きます。おひさまが でると <ruby>開<rt>ひら</rt></ruby>いて、かげると とじます。",
     questionAudioLabel: "たんぽぽのつぼみのせつめいをきく",
     answerAudioLabel: "たんぽぽのはなのせつめいをきく",
-    budImage: "assets/dandelion_bud.png",
-    flowerImage: "assets/dandelion_flower.png"
+    budImage: "assets/dandelion_bud.webp",
+    flowerImage: "assets/dandelion_flower.webp"
   },
   {
     id: "hydrangea",
@@ -40,8 +40,8 @@ window.plantsData = [
     answer: "これは、あじさいの つぼみです。<br>ちいさな <ruby>花<rt>はな</rt></ruby>が たくさん あつまって、おおきな まんまるい <ruby>形<rt>かたち</rt></ruby>になって <ruby>咲<rt>さ</rt></ruby>きます。",
     questionAudioLabel: "あじさいのつぼみのせつめいをきく",
     answerAudioLabel: "あじさいのはなのせつめいをきく",
-    budImage: "assets/hydrangea_bud.png",
-    flowerImage: "assets/hydrangea_flower.png"
+    budImage: "assets/hydrangea_bud.webp",
+    flowerImage: "assets/hydrangea_flower.webp"
   },
   {
     id: "rose",
@@ -51,8 +51,8 @@ window.plantsData = [
     answer: "これは、バラの つぼみです。<br>なんまいもの <ruby>花<rt>はな</rt></ruby>びらが かさなりあって、とても はなやかに <ruby>開<rt>ひら</rt></ruby>きます。いい においが します。",
     questionAudioLabel: "バラのつぼみのせつめいをきく",
     answerAudioLabel: "バラのはなのせつめいをきく",
-    budImage: "assets/rose_bud.png",
-    flowerImage: "assets/rose_flower.png"
+    budImage: "assets/rose_bud.webp",
+    flowerImage: "assets/rose_flower.webp"
   },
   {
     id: "sakura",
@@ -62,8 +62,8 @@ window.plantsData = [
     answer: "これは、さくらの つぼみです。<br>うすい ピンクいろの <ruby>花<rt>はな</rt></ruby>びらが、いっせいに ふんわりと <ruby>開<rt>ひら</rt></ruby>きます。",
     questionAudioLabel: "さくらのつぼみのせつめいをきく",
     answerAudioLabel: "さくらのはなのせつめいをきく",
-    budImage: "assets/sakura_bud.png",
-    flowerImage: "assets/sakura_flower.png"
+    budImage: "assets/sakura_bud.webp",
+    flowerImage: "assets/sakura_flower.webp"
   },
   {
     id: "cosmos",
@@ -73,8 +73,8 @@ window.plantsData = [
     answer: "これは、コスモスの つぼみです。<br>うすくて ひらべったい <ruby>花<rt>はな</rt></ruby>びらが、おひさまに むかって まるく <ruby>開<rt>ひら</rt></ruby>きます。",
     questionAudioLabel: "コスモスのつぼみのせつめいをきく",
     answerAudioLabel: "コスモスのはなのせつめいをきく",
-    budImage: "assets/cosmos_bud.png",
-    flowerImage: "assets/cosmos_flower.png"
+    budImage: "assets/cosmos_bud.webp",
+    flowerImage: "assets/cosmos_flower.webp"
   },
   {
     id: "azalea",
@@ -84,8 +84,8 @@ window.plantsData = [
     answer: "これは、つつじの つぼみです。<br>ラッパのような <ruby>形<rt>かたち</rt></ruby>の <ruby>花<rt>はな</rt></ruby>が、ちかくに たくさん あつまって げんきに <ruby>咲<rt>さ</rt></ruby>きます。",
     questionAudioLabel: "つつじのつぼみのせつめいをきく",
     answerAudioLabel: "つつじのはなのせつめいをきく",
-    budImage: "assets/azalea_bud.png",
-    flowerImage: "assets/azalea_flower.png"
+    budImage: "assets/azalea_bud.webp",
+    flowerImage: "assets/azalea_flower.webp"
   },
   {
     id: "nanohana",
@@ -95,8 +95,8 @@ window.plantsData = [
     answer: "これは、<ruby>菜<rt>な</rt></ruby>の<ruby>花<rt>はな</rt></ruby>の つぼみです。<br><ruby>下<rt>した</rt></ruby>の ほうから じゅんばんに、<ruby>黄色<rt>きいろ</rt></ruby>い ちいさな <ruby>花<rt>はな</rt></ruby>が たくさん <ruby>咲<rt>さ</rt></ruby>いて いきます。",
     questionAudioLabel: "菜の花のつぼみのせつめいをきく",
     answerAudioLabel: "菜の花のはなのせつめいをきく",
-    budImage: "assets/nanohana_bud.png",
-    flowerImage: "assets/nanohana_flower.png"
+    budImage: "assets/nanohana_bud.webp",
+    flowerImage: "assets/nanohana_flower.webp"
   },
   {
     id: "lily",
@@ -106,8 +106,8 @@ window.plantsData = [
     answer: "これは、ゆりの つぼみです。<br><ruby>上<rt>うえ</rt></ruby>や よこを むいて、おおきな <ruby>花<rt>はな</rt></ruby>びらが そりかえるように <ruby>開<rt>ひら</rt></ruby>きます。",
     questionAudioLabel: "ゆりのつぼみのせつめいをきく",
     answerAudioLabel: "ゆりのはなのせつめいをきく",
-    budImage: "assets/lily_bud.png",
-    flowerImage: "assets/lily_flower.png"
+    budImage: "assets/lily_bud.webp",
+    flowerImage: "assets/lily_flower.webp"
   },
   {
     id: "pansy",
@@ -117,8 +117,8 @@ window.plantsData = [
     answer: "これは、パンジーの つぼみです。<br><ruby>上<rt>うえ</rt></ruby>を むいて、ちょうちょが はねを ひろげたように ひらひらと <ruby>咲<rt>さ</rt></ruby>きます。",
     questionAudioLabel: "パンジーのつぼみのせつめいをきく",
     answerAudioLabel: "パンジーのはなのせつめいをきく",
-    budImage: "assets/pansy_bud.png",
-    flowerImage: "assets/pansy_flower.png"
+    budImage: "assets/pansy_bud.webp",
+    flowerImage: "assets/pansy_flower.webp"
   },
   {
     id: "carnation",
@@ -128,8 +128,8 @@ window.plantsData = [
     answer: "これは、カーネーションの つぼみです。<br>はなびらの はしが ギザギザしていて、ドレスの フリルのように かさなりあって <ruby>咲<rt>さ</rt></ruby>きます。",
     questionAudioLabel: "カーネーションのつぼみのせつめいをきく",
     answerAudioLabel: "カーネーションのはなのせつめいをきく",
-    budImage: "assets/carnation_bud.png",
-    flowerImage: "assets/carnation_flower.png"
+    budImage: "assets/carnation_bud.webp",
+    flowerImage: "assets/carnation_flower.webp"
   },
   {
     id: "camellia",
@@ -139,8 +139,8 @@ window.plantsData = [
     answer: "これは、つばきの つぼみです。<br>かたい はっぱの あいだで、あかい <ruby>花<rt>はな</rt></ruby>びらが コップのように まるく <ruby>開<rt>ひら</rt></ruby>きます。",
     questionAudioLabel: "つばきのつぼみのせつめいをきく",
     answerAudioLabel: "つばきのはなのせつめいをきく",
-    budImage: "assets/camellia_bud.png",
-    flowerImage: "assets/camellia_flower.png"
+    budImage: "assets/camellia_bud.webp",
+    flowerImage: "assets/camellia_flower.webp"
   },
   {
     id: "cucumber",
@@ -150,8 +150,8 @@ window.plantsData = [
     answer: "これは、キュウリの つぼみです。<br><ruby>黄色<rt>きいろ</rt></ruby>い <ruby>星<rt>ほし</rt></ruby>のような <ruby>形<rt>かたち</rt></ruby>の <ruby>花<rt>はな</rt></ruby>が <ruby>咲<rt>さ</rt></ruby>きます。はなの下には、もう ちいさな キュウリが ついています。",
     questionAudioLabel: "キュウリのつぼみのせつめいをきく",
     answerAudioLabel: "キュウリのはなのせつめいをきく",
-    budImage: "assets/cucumber_bud.png",
-    flowerImage: "assets/cucumber_flower.png"
+    budImage: "assets/cucumber_bud.webp",
+    flowerImage: "assets/cucumber_flower.webp"
   },
   {
     id: "strawberry",
@@ -161,8 +161,8 @@ window.plantsData = [
     answer: "これは、いちごの つぼみです。<br>しろくて まるい <ruby>花<rt>はな</rt></ruby>びらが <ruby>開<rt>ひら</rt></ruby>きます。<ruby>花<rt>はな</rt></ruby>が ちった あとに、あまくて あかい <ruby>実<rt>み</rt></ruby>が できます。",
     questionAudioLabel: "いちごのつぼみのせつめいをきく",
     answerAudioLabel: "いちごのはなのせつめいをきく",
-    budImage: "assets/strawberry_bud.png",
-    flowerImage: "assets/strawberry_flower.png"
+    budImage: "assets/strawberry_bud.webp",
+    flowerImage: "assets/strawberry_flower.webp"
   },
   {
     id: "pumpkin",
@@ -172,8 +172,8 @@ window.plantsData = [
     answer: "これは、かぼちゃの つぼみです。<br><ruby>黄色<rt>きいろ</rt></ruby>い おおきな ラッパのような <ruby>形<rt>かたち</rt></ruby>の <ruby>花<rt>はな</rt></ruby>が げんきに <ruby>咲<rt>さ</rt></ruby>きます。",
     questionAudioLabel: "かぼちゃのつぼみのせつめいをきく",
     answerAudioLabel: "かぼちゃのはなのせつめいをきく",
-    budImage: "assets/pumpkin_bud.png",
-    flowerImage: "assets/pumpkin_flower.png"
+    budImage: "assets/pumpkin_bud.webp",
+    flowerImage: "assets/pumpkin_flower.webp"
   },
   {
     id: "okra",
@@ -183,8 +183,8 @@ window.plantsData = [
     answer: "これは、おくらの つぼみです。<br>うすい <ruby>黄色<rt>きいろ</rt></ruby>の おおきな <ruby>花<rt>はな</rt></ruby>が <ruby>上<rt>うえ</rt></ruby>を むいて <ruby>開<rt>ひら</rt></ruby>きます。あさに <ruby>咲<rt>さ</rt></ruby>いて、<ruby>夕方<rt>ゆうがた</rt></ruby>には しぼんでしまいます。",
     questionAudioLabel: "おくらのつぼみのせつめいをきく",
     answerAudioLabel: "おくらのはなのせつめいをきく",
-    budImage: "assets/okra_bud.png",
-    flowerImage: "assets/okra_flower.png"
+    budImage: "assets/okra_bud.webp",
+    flowerImage: "assets/okra_flower.webp"
   },
   {
     id: "apple",
@@ -194,8 +194,8 @@ window.plantsData = [
     answer: "これは、りんごの つぼみです。<br>しろくて まるい <ruby>花<rt>はな</rt></ruby>びらが、ほんのり ピンクに そまって かわいく <ruby>咲<rt>さ</rt></ruby>きます。",
     questionAudioLabel: "りんごのつぼみのせつめいをきく",
     answerAudioLabel: "りんごのはなのせつめいをきく",
-    budImage: "assets/apple_bud.png",
-    flowerImage: "assets/apple_flower.png"
+    budImage: "assets/apple_bud.webp",
+    flowerImage: "assets/apple_flower.webp"
   },
   {
     id: "mandarin",
@@ -205,8 +205,8 @@ window.plantsData = [
     answer: "これは、みかんの つぼみです。<br>しろくて かたい <ruby>花<rt>はな</rt></ruby>びらが ５まい <ruby>開<rt>ひら</rt></ruby>きます。とても いい においが します。",
     questionAudioLabel: "みかんのつぼみのせつめいをきく",
     answerAudioLabel: "みかんのはなのせつめいをきく",
-    budImage: "assets/mandarin_bud.png",
-    flowerImage: "assets/mandarin_flower.png"
+    budImage: "assets/mandarin_bud.webp",
+    flowerImage: "assets/mandarin_flower.webp"
   },
   {
     id: "broccoli",
@@ -216,7 +216,7 @@ window.plantsData = [
     answer: "これは、ブロッコリーの つぼみです。<br>ちいさな <ruby>黄色<rt>きいろ</rt></ruby>い <ruby>花<rt>はな</rt></ruby>が、あちこちから たくさん とびだすように <ruby>咲<rt>さ</rt></ruby>きます。",
     questionAudioLabel: "ブロッコリーのつぼみのせつめいをきく",
     answerAudioLabel: "ブロッコリーのはなのせつめいをきく",
-    budImage: "assets/broccoli_bud.png",
-    flowerImage: "assets/broccoli_flower.png"
+    budImage: "assets/broccoli_bud.webp",
+    flowerImage: "assets/broccoli_flower.webp"
   }
 ];

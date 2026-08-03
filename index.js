@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="card-face card-front">
               <div class="card-badge badge-question">とい</div>
               <div class="image-box">
-                <img src="${plant.budImage}" alt="${plant.name}のつぼみ" loading="lazy">
+                <img src="${plant.budImage}" alt="${plant.name}のつぼみ"
+                     width="1024" height="1024" loading="lazy" decoding="async">
               </div>
               <div class="text-box">
                 <p class="question-text js-read-target">
@@ -61,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="card-face card-back">
               <div class="card-badge badge-answer">こたえ</div>
               <div class="image-box">
-                <img src="${plant.flowerImage}" alt="咲いた${plant.name}の花" loading="lazy">
+                <img src="${plant.flowerImage}" alt="咲いた${plant.name}の花"
+                     width="1024" height="1024" loading="lazy" decoding="async">
               </div>
               <div class="text-box">
                 <p class="answer-text js-read-target">

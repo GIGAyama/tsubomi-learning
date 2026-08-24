@@ -23,48 +23,61 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="font-['Kosugi_Maru','Outfit',sans-serif] bg-brand-light text-gray-800 min-h-screen flex flex-col items-center antialiased selection:bg-brand-secondary selection:text-brand-secondary-text">
 
   <!-- ヘッダーエリア -->
-  <header class="main-header">
-    <div class="header-container">
-      <span class="badge">こくご「つぼみ」の がくしゅう</span>
-      <h1 id="page-title">いろいろな つぼみと <ruby>花<rt>はな</rt></ruby></h1>
-      <p class="subtitle">
+  <header class="w-full bg-white text-center mb-12 shadow-[0_8px_30px_rgba(65,176,125,0.06)] border-b border-brand-primary/10 relative flex flex-col items-center py-12 px-4">
+    <!-- 装飾的な背景グラデーション -->
+    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand-primary via-accent-question to-accent-answer"></div>
+    
+    <div class="w-full max-w-4xl flex flex-col items-center">
+      <span class="inline-block bg-brand-secondary text-brand-secondary-text text-sm font-bold px-5 py-2 rounded-full mb-5 shadow-sm">
+        こくご「つぼみ」の がくしゅう
+      </span>
+      <h1 id="page-title" class="text-3xl md:text-4xl text-gray-800 mb-6 font-bold tracking-tight ruby-rt-small">
+        いろいろな つぼみと <ruby>花<rt>はな</rt></ruby>
+      </h1>
+      <p class="text-base md:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto ruby-rt-small mb-10">
         つぼみの <ruby>画像<rt>がぞう</rt></ruby>を おすと、どんな <ruby>花<rt>はな</rt></ruby>が <ruby>咲<rt>さ</rt></ruby>くか わかるよ！<br>
         「こえで きく」ボタンを おすと、ゆっくり よんで くれるよ。
       </p>
+
+      <!-- カテゴリ切り替えタブ -->
+      <nav class="w-full flex justify-center" aria-label="しょくぶつの なかまわけ">
+        <div class="flex flex-wrap justify-center gap-2 md:gap-4 bg-gray-50/80 p-2 md:p-3 rounded-full border border-gray-200/50">
+          <button class="tab-btn active text-gray-500 [&.active]:bg-brand-primary [&.active]:text-white [&.active]:shadow-[0_8px_20px_rgba(65,176,125,0.25)] hover:text-gray-800 [&.active]:hover:text-white hover:bg-gray-200/50 [&.active]:hover:bg-brand-hover font-['Kosugi_Maru'] text-base md:text-lg font-bold px-5 py-3 rounded-full cursor-pointer transition-all duration-300 ease-out flex items-center gap-2" data-category="all" aria-selected="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+            すべての しょくぶつ
+          </button>
+          <button class="tab-btn text-gray-500 [&.active]:bg-brand-primary [&.active]:text-white [&.active]:shadow-[0_8px_20px_rgba(65,176,125,0.25)] hover:text-gray-800 [&.active]:hover:text-white hover:bg-gray-200/50 [&.active]:hover:bg-brand-hover font-['Kosugi_Maru'] text-base md:text-lg font-bold px-5 py-3 rounded-full cursor-pointer transition-all duration-300 ease-out flex items-center gap-2" data-category="garden" aria-selected="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+            にわ・みちばたの はな
+          </button>
+          <button class="tab-btn text-gray-500 [&.active]:bg-brand-primary [&.active]:text-white [&.active]:shadow-[0_8px_20px_rgba(65,176,125,0.25)] hover:text-gray-800 [&.active]:hover:text-white hover:bg-gray-200/50 [&.active]:hover:bg-brand-hover font-['Kosugi_Maru'] text-base md:text-lg font-bold px-5 py-3 rounded-full cursor-pointer transition-all duration-300 ease-out flex items-center gap-2" data-category="food" aria-selected="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg>
+            やさい・くだものの はな
+          </button>
+        </div>
+      </nav>
     </div>
   </header>
 
-  <!-- カテゴリ切り替えタブ（追加） -->
-  <nav class="category-nav" aria-label="しょくぶつの なかまわけ">
-    <div class="tabs-container">
-      <button class="tab-btn active" data-category="all" aria-selected="true">
-        🌸 すべての しょくぶつ
-      </button>
-      <button class="tab-btn" data-category="garden" aria-selected="false">
-        🏡 にわ・みちばたの はな
-      </button>
-      <button class="tab-btn" data-category="food" aria-selected="false">
-        🍅 やさい・くだものの はな
-      </button>
-    </div>
-  </nav>
-
   <!-- メインコンテンツ -->
-  <main class="content-container">
+  <main class="w-full max-w-6xl flex-1 px-4">
     
     <!-- 動的にカードが挿入されるグリッド -->
-    <section id="cards-container" class="cards-grid">
+    <section id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-20 w-full place-items-center">
       <!-- JavaScriptによってカードがここに自動生成されます -->
     </section>
 
     <!-- 学習振り返りエリア -->
-    <section class="learning-note">
-      <div class="note-container">
-        <h2>💡 がくしゅうの ポイント</h2>
-        <p>
+    <section class="max-w-4xl mx-auto mb-20 w-full">
+      <div class="bg-amber-50/80 p-8 md:p-10 rounded-3xl shadow-[0_12px_28px_rgba(245,166,35,0.06)] border-2 border-dashed border-amber-500/30">
+        <h2 class="text-xl md:text-2xl text-amber-600 mb-6 flex items-center font-bold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+          がくしゅうの ポイント
+        </h2>
+        <p class="text-base md:text-lg text-amber-900/80 leading-loose ruby-rt-small">
           「とい」の ぶんと、「こたえ」の ぶんを よく よみくらべて みよう。<br>
           つぼみの <ruby>形<rt>かたち</rt></ruby>や、<ruby>花<rt>はな</rt></ruby>の <ruby>咲<rt>さ</rt></ruby>きかたが、どのように せつめい されているかな？<br>
           <ruby>教科書<rt>きょうかしょ</rt></ruby>の 「あさがお」「はす」「ききょう」と おなじように、はじめに 「とい」があって、つぎに 「こたえ」が 書かれている じゅんじょを たしかめて みよう。
@@ -74,12 +87,12 @@
   </main>
 
   <!-- フッター -->
-  <footer class="main-footer">
-    <p>© 2026 こくごの じかん. すべての <ruby>画像<rt>がぞう</rt></ruby>は <ruby>生成<rt>せいせい</rt></ruby>AI で つくった ものです。ほんものの しゃしんでは ありません。</p>
+  <footer class="w-full text-center py-8 border-t border-brand-primary/10 mt-auto">
+    <p class="text-sm text-gray-500 ruby-rt-small">© 2026 こくごの じかん. すべての <ruby>画像<rt>がぞう</rt></ruby>は <ruby>生成<rt>せいせい</rt></ruby>AI で つくった ものです。ほんものの しゃしんでは ありません。</p>
   </footer>
 
   <!-- データファイルとロジックファイルを読み込み -->
-  <script src="plants-data.js"></script>
-  <script src="index.js"></script>
+  <script type="module" src="plants-data.js"></script>
+  <script type="module" src="index.js"></script>
 </body>
 </html>

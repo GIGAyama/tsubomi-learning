@@ -1,0 +1,14 @@
+{
+  "name": "tsubomi-learning",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A static site for learning about buds and flowers.",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

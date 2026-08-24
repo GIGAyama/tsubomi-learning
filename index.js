@@ -34,48 +34,52 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. カードHTMLの動的生成
   function createCardHTML(plant) {
     return `
-      <article class="card-wrapper" id="card-${plant.id}" data-category="${plant.category}">
-        <div class="card-outer">
-          <div class="card-inner">
+      <article class="card-wrapper perspective-1500 w-full max-w-sm animate-card-fade-in group cursor-pointer" id="card-${plant.id}" data-category="${plant.category}">
+        <div class="card-outer w-full h-[620px]">
+          <div class="card-inner relative w-full h-full preserve-3d transition-transform duration-700 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] shadow-sm group-hover:shadow-xl group-hover:-translate-y-2 rounded-3xl">
             <!-- つぼみ（表） -->
-            <div class="card-face card-front">
-              <div class="card-badge badge-question">とい</div>
-              <div class="image-box">
+            <div class="card-face card-front absolute w-full h-full backface-hidden rounded-3xl bg-white border border-brand-primary/10 p-6 flex flex-col justify-between overflow-hidden">
+              <div class="absolute top-4 left-4 text-sm font-bold text-white bg-accent-question px-4 py-1.5 rounded-full shadow-md z-10">とい</div>
+              <div class="w-full h-[260px] rounded-2xl overflow-hidden relative bg-gray-50/50 mb-4">
                 <img src="${plant.budImage}" alt="${plant.name}のつぼみ"
-                     width="1024" height="1024" loading="lazy" decoding="async">
+                     width="1024" height="1024" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               </div>
-              <div class="text-box">
-                <p class="question-text js-read-target">
+              <div class="flex-1 flex items-center justify-center p-2 text-left mb-4">
+                <p class="text-xl text-gray-800 font-medium leading-relaxed ruby-rt-small js-read-target w-full">
                   ${plant.question}
                 </p>
               </div>
-              <div class="btn-group">
-                <button class="btn btn-audio btn-front-audio" aria-label="こえで きく">
-                  <span class="btn-icon">🔊</span>こえで きく
+              <div class="flex gap-3 mt-auto">
+                <button class="btn-audio btn-front-audio flex-1 bg-gray-50 hover:bg-gray-100 text-gray-600 hover:text-gray-900 border border-gray-200/50 rounded-xl py-3 px-4 font-bold transition-colors flex items-center justify-center gap-2" aria-label="こえで きく">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                  こえで きく
                 </button>
-                <button class="btn btn-action btn-flip" aria-label="こたえを みる">
-                  こたえを みる <span class="btn-arrow">→</span>
+                <button class="btn-flip flex-1 bg-brand-primary hover:bg-brand-hover text-white rounded-xl py-3 px-4 font-bold shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 flex items-center justify-center gap-1 group/btn" aria-label="こたえを みる">
+                  こたえを みる 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover/btn:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
             </div>
             <!-- 花（裏） -->
-            <div class="card-face card-back">
-              <div class="card-badge badge-answer">こたえ</div>
-              <div class="image-box">
+            <div class="card-face card-back absolute w-full h-full backface-hidden rotate-y-180 rounded-3xl bg-white border border-accent-answer/20 p-6 flex flex-col justify-between overflow-hidden">
+              <div class="absolute top-4 left-4 text-sm font-bold text-white bg-accent-answer px-4 py-1.5 rounded-full shadow-md z-10">こたえ</div>
+              <div class="w-full h-[260px] rounded-2xl overflow-hidden relative bg-gray-50/50 mb-4">
                 <img src="${plant.flowerImage}" alt="咲いた${plant.name}の花"
-                     width="1024" height="1024" loading="lazy" decoding="async">
+                     width="1024" height="1024" loading="lazy" decoding="async" class="w-full h-full object-cover">
               </div>
-              <div class="text-box">
-                <p class="answer-text js-read-target">
+              <div class="flex-1 flex items-center justify-center p-2 text-left mb-4">
+                <p class="text-xl text-gray-800 font-medium leading-relaxed ruby-rt-small js-read-target w-full">
                   ${plant.answer}
                 </p>
               </div>
-              <div class="btn-group">
-                <button class="btn btn-audio btn-back-audio" aria-label="こえで きく">
-                  <span class="btn-icon">🔊</span>こえで きく
+              <div class="flex gap-3 mt-auto">
+                <button class="btn-audio btn-back-audio flex-1 bg-gray-50 hover:bg-gray-100 text-gray-600 hover:text-gray-900 border border-gray-200/50 rounded-xl py-3 px-4 font-bold transition-colors flex items-center justify-center gap-2" aria-label="こえで きく">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                  こえで きく
                 </button>
-                <button class="btn btn-action btn-secondary btn-flip" aria-label="つぼみに もどす">
-                  <span class="btn-arrow">←</span> つぼみを みる
+                <button class="btn-flip flex-1 bg-brand-secondary hover:bg-brand-secondary/80 text-brand-secondary-text rounded-xl py-3 px-4 font-bold transition-all hover:-translate-y-0.5 flex items-center justify-center gap-1 group/btn" aria-label="つぼみに もどす">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover/btn:-translate-x-1"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                  つぼみを みる
                 </button>
               </div>
             </div>
@@ -102,8 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
       window.speechSynthesis.cancel();
     }
     if (activeAudioButton) {
-      activeAudioButton.classList.remove('is-playing');
-      activeAudioButton.innerHTML = `<span class="btn-icon">🔊</span>こえで きく`;
+      activeAudioButton.classList.remove('animate-pulse-ring', 'bg-orange-200', 'text-orange-700');
+      activeAudioButton.classList.add('bg-gray-50', 'text-gray-600');
+      activeAudioButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>こえで きく`;
       activeAudioButton = null;
     }
     currentUtterance = null;
@@ -153,15 +158,17 @@ document.addEventListener('DOMContentLoaded', () => {
     u.pitch = 1.15; // 明瞭で聞き取りやすい高めの声
     
     u.onstart = () => {
-      btn.classList.add('is-playing');
-      btn.innerHTML = `<span class="btn-icon">⏹️</span>とめる`;
+      btn.classList.add('animate-pulse-ring', 'bg-orange-200', 'text-orange-700');
+      btn.classList.remove('bg-gray-50', 'text-gray-600');
+      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="12" height="12" x="6" y="6" rx="2"/></svg>とめる`;
       activeAudioButton = btn;
       currentUtterance = u;
     };
     
     u.onend = () => {
-      btn.classList.remove('is-playing');
-      btn.innerHTML = `<span class="btn-icon">🔊</span>こえで きく`;
+      btn.classList.remove('animate-pulse-ring', 'bg-orange-200', 'text-orange-700');
+      btn.classList.add('bg-gray-50', 'text-gray-600');
+      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>こえで きく`;
       if (activeAudioButton === btn) {
         activeAudioButton = null;
       }
@@ -169,8 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     u.onerror = () => {
-      btn.classList.remove('is-playing');
-      btn.innerHTML = `<span class="btn-icon">🔊</span>こえで きく`;
+      btn.classList.remove('animate-pulse-ring', 'bg-orange-200', 'text-orange-700');
+      btn.classList.add('bg-gray-50', 'text-gray-600');
+      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>こえで きく`;
       if (activeAudioButton === btn) {
         activeAudioButton = null;
       }

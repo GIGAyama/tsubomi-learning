@@ -6,10 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^5.2.1"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",

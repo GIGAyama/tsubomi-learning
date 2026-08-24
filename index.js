@@ -5,12 +5,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabButtons = document.querySelectorAll('.tab-btn');
 
   // 1. フリップサウンドの生成 (Web Audio API)
+  // AudioContext はカードをめくるたびに作らず、1つを使い回す。
+  // 毎回 new すると、ブラウザが同時に持てる数の上限に当たって音が鳴らなくなる。
+  let audioCtx = null;
+  function getAudioContext() {
+    const Ctor = window.AudioContext || window.webkitAudioContext;
+    if (!Ctor) return null;
+    if (!audioCtx) audioCtx = new Ctor();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  }
+
   function playFlipSound() {
     try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) return;
-      const ctx = new AudioContext();
-      
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       
@@ -29,6 +39,25 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {
       console.warn("Web Audio API is blocked or not supported:", e);
     }
+  }
+
+  // 読み上げボタンの見た目を切りかえる。aria-label も一緒に変えないと、
+  // 画面読み上げソフトを使っている人には「とめる」に変わったことが伝わらない。
+  const SPEAKER_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
+  const STOP_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="12" height="12" x="6" y="6" rx="2"/></svg>`;
+
+  function setAudioButtonIdle(btn) {
+    btn.classList.remove('animate-pulse-ring', 'bg-orange-200', 'text-orange-700');
+    btn.classList.add('bg-gray-50', 'text-gray-600');
+    btn.innerHTML = `${SPEAKER_ICON}こえで きく`;
+    btn.setAttribute('aria-label', btn.dataset.audioLabel || 'こえで きく');
+  }
+
+  function setAudioButtonPlaying(btn) {
+    btn.classList.add('animate-pulse-ring', 'bg-orange-200', 'text-orange-700');
+    btn.classList.remove('bg-gray-50', 'text-gray-600');
+    btn.innerHTML = `${STOP_ICON}とめる`;
+    btn.setAttribute('aria-label', 'よみあげを とめる');
   }
 
   // 2. カードHTMLの動的生成
@@ -50,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </p>
               </div>
               <div class="flex gap-3 mt-auto">
-                <button class="btn-audio btn-front-audio flex-1 bg-gray-50 hover:bg-gray-100 text-gray-600 hover:text-gray-900 border border-gray-200/50 rounded-xl py-3 px-4 font-bold transition-colors flex items-center justify-center gap-2" aria-label="こえで きく">
+                <button class="btn-audio btn-front-audio flex-1 bg-gray-50 hover:bg-gray-100 text-gray-600 hover:text-gray-900 border border-gray-200/50 rounded-xl py-3 px-4 font-bold transition-colors flex items-center justify-center gap-2" data-audio-label="${plant.questionAudioLabel}" aria-label="${plant.questionAudioLabel}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
                   こえで きく
                 </button>
@@ -73,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </p>
               </div>
               <div class="flex gap-3 mt-auto">
-                <button class="btn-audio btn-back-audio flex-1 bg-gray-50 hover:bg-gray-100 text-gray-600 hover:text-gray-900 border border-gray-200/50 rounded-xl py-3 px-4 font-bold transition-colors flex items-center justify-center gap-2" aria-label="こえで きく">
+                <button class="btn-audio btn-back-audio flex-1 bg-gray-50 hover:bg-gray-100 text-gray-600 hover:text-gray-900 border border-gray-200/50 rounded-xl py-3 px-4 font-bold transition-colors flex items-center justify-center gap-2" data-audio-label="${plant.answerAudioLabel}" aria-label="${plant.answerAudioLabel}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
                   こえで きく
                 </button>
@@ -106,9 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.speechSynthesis.cancel();
     }
     if (activeAudioButton) {
-      activeAudioButton.classList.remove('animate-pulse-ring', 'bg-orange-200', 'text-orange-700');
-      activeAudioButton.classList.add('bg-gray-50', 'text-gray-600');
-      activeAudioButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>こえで きく`;
+      setAudioButtonIdle(activeAudioButton);
       activeAudioButton = null;
     }
     currentUtterance = null;
@@ -158,32 +185,21 @@ document.addEventListener('DOMContentLoaded', () => {
     u.pitch = 1.15; // 明瞭で聞き取りやすい高めの声
     
     u.onstart = () => {
-      btn.classList.add('animate-pulse-ring', 'bg-orange-200', 'text-orange-700');
-      btn.classList.remove('bg-gray-50', 'text-gray-600');
-      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="12" height="12" x="6" y="6" rx="2"/></svg>とめる`;
+      setAudioButtonPlaying(btn);
       activeAudioButton = btn;
       currentUtterance = u;
     };
     
-    u.onend = () => {
-      btn.classList.remove('animate-pulse-ring', 'bg-orange-200', 'text-orange-700');
-      btn.classList.add('bg-gray-50', 'text-gray-600');
-      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>こえで きく`;
+    const finish = () => {
+      setAudioButtonIdle(btn);
       if (activeAudioButton === btn) {
         activeAudioButton = null;
       }
       currentUtterance = null;
     };
-    
-    u.onerror = () => {
-      btn.classList.remove('animate-pulse-ring', 'bg-orange-200', 'text-orange-700');
-      btn.classList.add('bg-gray-50', 'text-gray-600');
-      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>こえで きく`;
-      if (activeAudioButton === btn) {
-        activeAudioButton = null;
-      }
-      currentUtterance = null;
-    };
+
+    u.onend = finish;
+    u.onerror = finish;
     
     window.speechSynthesis.speak(u);
   }
@@ -232,10 +248,10 @@ document.addEventListener('DOMContentLoaded', () => {
       // アクティブタブ切り替え
       tabButtons.forEach(btn => {
         btn.classList.remove('active');
-        btn.setAttribute('aria-selected', 'false');
+        btn.setAttribute('aria-pressed', 'false');
       });
       button.classList.add('active');
-      button.setAttribute('aria-selected', 'true');
+      button.setAttribute('aria-pressed', 'true');
       
       const category = button.getAttribute('data-category');
       const allCards = cardsContainer.querySelectorAll('.card-wrapper');

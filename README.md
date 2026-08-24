@@ -41,25 +41,30 @@
 
 ## 技術構成
 
-- 素の HTML / CSS / JavaScript（フレームワーク・ビルド・外部ライブラリなし）
+- HTML / JavaScript + Tailwind CSS v4、ビルドは Vite（`npm run build` で `dist/` を作ります）
 - 文字は Google Fonts（Kosugi Maru / Outfit）。読み込めない場合は端末のフォントで表示されます
 - 読み上げは Web Speech API（`SpeechSynthesisUtterance`、`ja-JP`・速さ 0.75）
 - めくったときの音は Web Audio API でその場で合成（音声ファイルは持ちません）
 - 画像は WebP（1024×1024）。`loading="lazy"` で必要になったときに読み込みます
 
 ```
-index.html      画面構成（見出し・なかまわけタブ・カードの置き場・がくしゅうのポイント）
-index.css       スタイル（子ども向けUI・カードのめくりアニメーション・レスポンシブ）
-index.js        カードの組み立て・めくる・読み上げ・なかまわけの絞りこみ
-plants-data.js  植物20種類のデータ（名前・といの文・こたえの文・画像のパス・なかま）
-assets/         つぼみと花の画像40枚（生成AIで用意した画像）
-privacy.html    プライバシーポリシー
-terms.html      利用規約
-CNAME           公開先のドメイン
+index.html          画面構成（見出し・なかまわけタブ・カードの置き場・がくしゅうのポイント）
+index.css           Tailwind の読み込みと、色・カードのめくりアニメーションなどの追加スタイル
+index.js            カードの組み立て・めくる・読み上げ・なかまわけの絞りこみ
+plants-data.js      植物20種類のデータ（名前・といの文・こたえの文・画像のパス・なかま）
+public/             ビルド時にそのまま dist/ へコピーされるファイル
+  assets/           つぼみと花の画像40枚（生成AIで用意した画像）
+  privacy.html      プライバシーポリシー
+  terms.html        利用規約
+  CNAME             公開先のドメイン
+vite.config.js      ビルドの設定
+.github/workflows/  main へ push すると dist/ を GitHub Pages へ公開します
 ```
 
-植物を増やすときは `plants-data.js` に1件追加し、`assets/` に `<id>_bud.webp` と `<id>_flower.webp` を置きます。`category` は `garden`（にわ・みちばた）か `food`（やさい・くだもの）のどちらかです。画面の側は追加の作業なしで、そのままカードが増えます。
+開発は `npm install` のあと `npm run dev`、公開用の書き出しは `npm run build` です。
+
+植物を増やすときは `plants-data.js` に1件追加し、`public/assets/` に `<id>_bud.webp` と `<id>_flower.webp` を置きます。`category` は `garden`（にわ・みちばた）か `food`（やさい・くだもの）のどちらかです。画面の側は追加の作業なしで、そのままカードが増えます。
 
 ## ライセンス
 
-[MIT](LICENSE)（ソースコードのみ。`assets/` の画像は対象外です）
+[MIT](LICENSE)（ソースコードのみ。`public/assets/` の画像は対象外です）

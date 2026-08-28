@@ -1,0 +1,29 @@
+{
+  "families": [
+    {
+      "family": "Kosugi Maru",
+      "weights": [
+        400
+      ]
+    },
+    {
+      "family": "Outfit",
+      "weights": [
+        400,
+        600
+      ]
+    }
+  ],
+  "grades": [
+    1,
+    2
+  ],
+  "scan": [
+    "index.html"
+  ],
+  "outDir": "fonts",
+  "cssPath": "fonts.css",
+  "hrefPrefix": "./fonts/",
+  "copyright": "Copyright The Kosugi Maru Project Authors\nCopyright The Outfit Project Authors",
+  "license": "SIL Open Font License 1.1 — 全文は fonts/OFL.txt"
+}

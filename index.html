@@ -87,13 +87,29 @@
     </section>
   </main>
 
-  <!-- フッター -->
-  <footer class="w-full text-center py-8 border-t border-brand-primary/10 mt-auto">
-    <p class="text-sm text-gray-500 ruby-rt-small">© 2026 こくごの じかん. すべての <ruby>画像<rt>がぞう</rt></ruby>は <ruby>生成<rt>せいせい</rt></ruby>AI で つくった ものです。ほんものの しゃしんでは ありません。</p>
+  <!--
+    フッター。利用規約とプライバシーへの行き先は、断り書きと同じ段の中に置く。
+    部品そのものは行の一部として振る舞う（:host が inline-flex）ので、
+    広い画面では行が 1 本も増えない。
+
+    ⚠️ 断り書き（画像は生成 AI）を短くしたり消したりしないこと。場所を取るから
+       削ってよい飾りではなく、本物の写真ではないと伝えるための断りで、
+       このアプリではここでしか言っていない。
+    ⚠️ 上下の余白は py-8（32px）から py-3（12px）へ詰めた。行き先を足したぶんを
+       ここで取り返してある。
+  -->
+  <footer class="w-full text-center py-3 border-t border-brand-primary/10 mt-auto">
+    <p class="text-sm text-gray-500 ruby-rt-small">© 2026 こくごの じかん. すべての <ruby>画像<rt>がぞう</rt></ruby>は <ruby>生成<rt>せいせい</rt></ruby>AI で つくった ものです。ほんものの しゃしんでは ありません。<span data-giga-links data-links="terms,privacy"></span></p>
   </footer>
 
   <!-- データファイルとロジックファイルを読み込み -->
   <script type="module" src="plants-data.js"></script>
   <script type="module" src="index.js"></script>
+
+  <!-- 利用規約・プライバシーへの行き先。中身は正本の部品
+       standards/web/giga-app-links.js（配布物 public/giga-app-links.js）が、
+       上のフッターに置いた <span data-giga-links> の中に出す。
+       data-links は置き場所の側に書いてある。 -->
+  <script src="./giga-app-links.js" defer></script>
 </body>
 </html>
